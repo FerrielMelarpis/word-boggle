@@ -84,7 +84,8 @@ function fill_board(board) {
 
 // timer function
 function count_down() {
-  var seconds = 1,
+  $('#time-holder').show();
+  var seconds = 180,
     minutes = parseInt(seconds / 60),
     counter = setInterval(timer, 1000);
 
@@ -95,6 +96,7 @@ function count_down() {
     minutes = parseInt(seconds / 60);
     if (seconds === 0) {
       clearInterval(counter);
+      $('#time-holder').hide();
       return false;
     }
   }
