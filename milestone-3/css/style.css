@@ -1,0 +1,101 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+ #about {
+  font-weight: bold;
+  padding-top: 1%;
+ }
+
+.collapsible {
+  color: #444;
+}
+
+footer.page-footer {
+  background-color: #FF9800; 
+}
+
+#how-to-play {
+  padding-top: 5%;
+}
+
+.icon-block {
+	padding: 0 15px;
+}
+
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+#rules {
+  padding-top: 5%;
+}
+
+td {
+	padding: 0px;
+}
+
+#logo {
+  padding-top: 5%;
+  width: 200px;
+  height: auto;
+}
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.button-collapse {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}

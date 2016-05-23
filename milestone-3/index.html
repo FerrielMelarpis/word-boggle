@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <title>Word Boggle</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar-fixed">
+        <nav class="white" role="navigation">
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="#" class="brand-logo"><img id="logo" src="images/logo.png"></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="modal-trigger waves-effect waves-light" href="#instructions">Instructions</a></li>
+                    <li><a class="waves-effect waves-light btn green lighten-2" href="#game" onclick="return play();">Play</a></li>
+                </ul>
+
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a class="modal-trigger waves-effect waves-light" href="#instructions">Instructions</a></li>
+                    <li><a class="waves-effect waves-light btn green lighten-2" href="#game" onclick="return play();">Play</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="instructions" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>Instructions</h4>
+            <p>The game starts when the play button is clicked.</p>
+            <p>A three minute timer will start.</p>
+            <p>Enter the number of players.</p>
+            <p>All players should enter their names. </p>
+            <p>All players should list down the words they searched from the boggle.</p>
+            <p>After the timer ended, each player will enter their list of words to an input text provided on the lower part of the game platform.</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Done</a>
+        </div>
+    </div>
+
+    <!-- Instructions -->
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <div class="row">
+                    <div id="about" class="col s6">
+                        <h3>Word Boggle</h3>
+                        <p>is a CMSC 142 project in University of the Philippines Los Ba&ntilde;os. It is a boggle game interface with a built-in boggle solver implemented in javascript using an iterative backtracking algorithm and trie data structure.</p>
+                    </div>
+                    <div id="how-to-play" class="col s6">
+                        <ul class="collapsible">
+                            <li>
+                                <div class="collapsible-header white center">GAME RULES</div>
+                                <div class="collapsible-body white">
+                                    <p>The time limit for searching words is three minutes.</p>
+                                    <p>
+                                        When the timer starts, all players search for the valid words.
+                                        <br> A player can search a word starting from a letter tile to an adjacent letter tile.
+                                        <br> However, a player can only traverse through the adjacent tiles that are not yet visited.
+                                    </p>
+                                    <p>After three minutes have elapsed, all players should immediately stop writing the words they searched.</p>
+                                    <p>Each player will enter their words to their input box separated by space.</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="collapsible">
+                            <li>
+                                <div class="collapsible-header white center">SCORING</div>
+                                <div class="collapsible-body white">
+                                    <p>In word boggle, you only win points for your words if no other players have found that word.</p>
+                                    <p>
+                                        Point system will be based on word length.
+                                        <div class="collection">
+                                            <a href="#!" class="collection-item">Length: 3-4<span class="badge">1 point</span></a>
+                                            <a href="#!" class="collection-item">Length: 5<span class="badge">2 points</span></a>
+                                            <a href="#!" class="collection-item">Length: 6<span class="badge">3 points</span></a>
+                                            <a href="#!" class="collection-item">Length: 7-above<span class="badge">5 points</span></a>
+                                        </div>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="parallax"><img src="images/instructions-bg.jpg"></div>
+    </div>
+
+    <!-- Play -->
+    <div id="game" class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s2 offset-s5">
+                    <div class="card orange">
+                        <div class="card-content white-text center-align">
+                            <span class="card-title">Timer</span>
+                            <h4 id="time"></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="boggle">
+                <div class="col s6">
+                    <div id="boggle-panel">
+                        <table id="boggle-grid" class="centered">
+                        </table>
+                    </div>
+                </div>
+                <div class="col s6">
+                    <ul class="collapsible">
+                        <li>
+                            <div id="res-count" class="collapsible-header center"></div>
+                            <div class="collapsible-body">
+                                <div id="res-words" class="collection"> </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="score-form" class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="nplayers" type="text" class="validate">
+                            <label for="nplayers">No. of Players</label>
+                        </div>
+                    </div>
+                    <input class="orange btn" type="submit" value="Enter"></input>
+                </form>
+            </div>
+        </div>
+    </div>
+
+  <!-- Footer -->
+  <div id="team" class="section scrollspy">
+    <footer class="page-footer fixed">
+      <div class="container">
+        <div class="row">
+          <h5 class="white-text">Team</h5>
+        </div>
+        <div class="row center">
+          <div class="col s4">
+            <img src="images/yel.jpg" class="circle responsive-img" width="75%">
+            <p>Ferriel Melarpis<br>
+            fbmelarpis@up.edu.ph</p>
+          </div>
+          <div class="col s4">
+            <img src="images/bil.jpg" class="circle responsive-img" width="75%">
+            <p>Brent Ian Luis<br>
+            biluis@up.edu.ph</p>
+          </div>
+          <div class="col s4">
+            <img src="images/von.jpg" class="circle responsive-img" width="75%">
+            <p>Von Jeric Estoque<br>
+            vjestoque@up.edu.ph</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        Made by <a class="brown-text text-lighten-3" href="#">Mir Warriors</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+    <!--  Scripts-->
+    <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/materialize.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/trie.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/boggle-solver.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/init.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+
+</html>
