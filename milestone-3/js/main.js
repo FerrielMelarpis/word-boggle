@@ -128,7 +128,6 @@ function process_winner(input, dict) {
     } else if (words.length === max) {
       winners.push(i);
     }
-    console.log(max)
   }
   return (winner === 0) ? 'NONE' : winners;
 }
