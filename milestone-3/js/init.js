@@ -1,6 +1,6 @@
 (function($) {
   $(function() {
-
+    // initialize the UI components
     $('.button-collapse').sideNav();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();

@@ -1,6 +1,7 @@
 var dict, input_board, result;
 read_file('./dict.txt', dict_handler);
 
+// updates the UI for the number and list of valid words
 function process_result(res) {
   $('#res-count').text('List of Words: ' + res.count);
   res.words
@@ -16,6 +17,7 @@ function process_result(res) {
     });
 }
 
+// function for file reading
 function read_file(file, fn) {
   $.get(file).success(data => fn(data)).error(() => {
     Materialize.toast('There was an error in loading ' + file, 1500);
@@ -23,6 +25,7 @@ function read_file(file, fn) {
   });
 }
 
+// handler for dictionary structure
 function dict_handler(data) {
   dict = new Trie();
   data
@@ -38,6 +41,7 @@ function dict_handler(data) {
   read_file('./input.txt', input_handler);
 }
 
+// handler for the test cases
 function input_handler(data) {
   var input = data.trim().split(/\r\n|\n|\r/),
     n = +input.shift(),
@@ -50,6 +54,7 @@ function input_handler(data) {
   process_result(result);
 }
 
+// function for getting values from the board
 function get_board() {
   var input = $('.boggle-cell'),
     n = Math.sqrt(input.length),
@@ -62,6 +67,7 @@ function get_board() {
   return board;
 }
 
+// function for filling up values of the board
 function fill_board(board) {
   var grid = $('#boggle-grid'),
     n = board.length;
@@ -76,6 +82,7 @@ function fill_board(board) {
 
 }
 
+// timer function
 function count_down() {
   var seconds = 1,
     minutes = parseInt(seconds / 60),
@@ -93,11 +100,13 @@ function count_down() {
   }
 }
 
+// randomizer function
 function shuffle() {
   var board = $('.boggle-cell');
   for (var i = 0; i < board.length; i++) board[i].value = String.fromCharCode(Math.floor(Math.random() * 26) + 'A'.charCodeAt());
 }
 
+// function for checking the winner
 function process_winner(input, dict) {
   var winners = [],
     winner = 0,
@@ -122,6 +131,7 @@ function process_winner(input, dict) {
   return (winner === 0) ? 'NONE' : winners;
 }
 
+// main game function
 function play() {
   $('#res-count').html('');
   $('#res-words').html('');
