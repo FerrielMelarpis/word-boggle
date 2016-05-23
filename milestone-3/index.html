@@ -7,7 +7,7 @@
     <title>Word Boggle</title>
 
     <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="font/material-design-icons/icon.css" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
@@ -113,8 +113,7 @@
             <div class="row" id="boggle">
                 <div class="col s6">
                     <div id="boggle-panel">
-                        <table id="boggle-grid" class="centered">
-                        </table>
+                        <table id="boggle-grid" class="centered responsive-table orange"></table>
                     </div>
                 </div>
                 <div class="col s6">
@@ -122,7 +121,7 @@
                         <li>
                             <div id="res-count" class="collapsible-header center"></div>
                             <div class="collapsible-body">
-                                <div id="res-words" class="collection"> </div>
+                                <div id="res-words" class="collection"></div>
                             </div>
                         </li>
                     </ul>
@@ -131,14 +130,17 @@
             <div id="score-form" class="row">
                 <form class="col s12">
                     <div class="row">
-                        <div class="input-field col s12">
-                            <input id="nplayers" type="text" class="validate">
+                        <div class="input-field col s4">
+                            <input id="nplayers" type="number" class="validate" required>
                             <label for="nplayers">No. of Players</label>
                         </div>
                     </div>
-                    <input class="orange btn" type="submit" value="Enter"></input>
+                    <a id="nenter"><input class="orange btn waves-effect waves-light" type="submit" value="Enter"></input></a>
                 </form>
             </div>
+						<div id="input-form" class="row">
+								<form class="col s12"></form>
+						</div>
         </div>
     </div>
 
