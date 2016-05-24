@@ -1,6 +1,6 @@
 5
-A B C D X
-E F G H Y
-I J K L S
-M N O P T
-R U V W Z
+A F V O X
+R K T L Y
+B H I W E
+D U N G Q
+P T Z S U

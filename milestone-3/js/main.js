@@ -84,6 +84,8 @@ function fill_board(board) {
 
 // timer function
 function count_down() {
+	$('#score-form').hide();
+	$('#input-form').hide();
   $('#time-holder').show();
   var seconds = 180,
     minutes = parseInt(seconds / 60),
@@ -95,8 +97,12 @@ function count_down() {
     seconds--;
     minutes = parseInt(seconds / 60);
     if (seconds === 0) {
+			$('#time').text('' + minutes + ':' + ((s < 10) ? '0' + s : s));
       clearInterval(counter);
-      $('#time-holder').hide();
+      setTimeout(() => {
+				$('#time-holder').hide();
+				$('#score-form').show();
+			}, 1000);
       return false;
     }
   }
@@ -114,7 +120,7 @@ function process_winner(input, dict) {
     winner = 0,
     max = 0,
     words = [];
-  Materialize.toast(JSON.stringify(input), 2000)
+
   for (var i in input) {
     for (var j in input) {
       if (input[i] == input[j]) continue;
@@ -129,19 +135,20 @@ function process_winner(input, dict) {
       winners.push(i);
     }
   }
+
   return (winner === 0) ? 'NONE' : winners;
 }
 
 // main game function
 function play() {
-  $('#res-count').html('');
-  $('#res-words').html('');
+	 $('#res-count').html('');
+	 $('#res-words').html('');
   shuffle();
   count_down();
-  $('#score-form').show();
   $('#nenter').click(() => {
     var n = $('#nplayers').val();
     $('#score-form').hide();
+		$('#input-form').show();
     $('#input-form').children().html('');
 
     for (var i = 0; i < n; i++) {
